@@ -20,15 +20,14 @@ class CountryDetailsViewController: UIViewController   {
     @IBOutlet weak var bordersTableView: UITableView!
     
     var passedCountryName : String?
-    var passedCountry : CountryOBJ?
     
     var countriesTVC : CountriesTableViewController?
 
     // Mark: -- vc life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        countriesTVC = CountriesTableViewController()
         
+        countriesTVC = CountriesTableViewController()
         bordersTableView.delegate = self
         bordersTableView.dataSource = countriesTVC
         // Do any additional setup after loading the view.
@@ -42,13 +41,7 @@ class CountryDetailsViewController: UIViewController   {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        if let passedCountry = passedCountry{
-            print("halo")
-            bindViewWithData(country: passedCountry)
-        }else{
-            getCountryDataFromServer()
-        }
+        getCountryDataFromServer()
     }
     
     
@@ -70,7 +63,7 @@ class CountryDetailsViewController: UIViewController   {
     
     
     func bindViewWithData(country : CountryOBJ){
-        
+
         self.titleLBL.text = country.name
         self.capitalLBL.text = country.capital ??  "----"
         self.populationLBL.text = (country.population?.description) ?? "----"
@@ -83,10 +76,12 @@ class CountryDetailsViewController: UIViewController   {
         
         RestCountriesManager.sharedInstance.getBorders(borders: country.borders, completionHandler: { (countries, error) in
             if error == nil{
+
                 self.countriesTVC?.allCountries = countries
                 self.bordersTableView.reloadData()
             }
             if countries.isEmpty{
+
                 self.bordersTableView.isHidden = true
             }
         })
@@ -103,11 +98,11 @@ class CountryDetailsViewController: UIViewController   {
 // Mark: -- table view delegate
 extension CountryDetailsViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let selectedCountry = countriesTVC?.allCountries[indexPath.row]
+         let selectedCountryName = countriesTVC?.allCountries[indexPath.row].name
         
         if let detailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "detailsVCSBID") as? CountryDetailsViewController{
 
-            detailsViewController.passedCountry = selectedCountry
+            detailsViewController.passedCountryName = selectedCountryName
             self.navigationController?.show(detailsViewController, sender: true)
         }
         
