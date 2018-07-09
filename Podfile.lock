@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (4.7.2)
+  - IQKeyboardManager (6.0.4)
+  - SwiftyJSON (4.0.0)
+
+DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire`)
+  - IQKeyboardManager (from `https://github.com/hackiftekhar/IQKeyboardManager`)
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire
+  IQKeyboardManager:
+    :git: https://github.com/hackiftekhar/IQKeyboardManager
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: ff16ce9e87aeb0ee1f30b28789db1fff01e8fb02
+    :git: https://github.com/Alamofire/Alamofire
+  IQKeyboardManager:
+    :commit: 608c2fd113f1ad02f1eeb56830c8f173ec89e5f1
+    :git: https://github.com/hackiftekhar/IQKeyboardManager
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  IQKeyboardManager: 29514134ef0334a6fa33cf4eee11c36c064baeaf
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+
+PODFILE CHECKSUM: 73ab56262272792d0fd05b2ce9dbf06eaabc2cab
+
+COCOAPODS: 1.5.0
